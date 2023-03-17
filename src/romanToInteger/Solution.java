@@ -7,6 +7,8 @@ public class Solution {
         int number = 0;
         int j = 0;
         char anteriorRoman = ' ';
+        int nrobase = 0;
+        int descuento = 0;
 
         for (int i = 0; i < romans.length; i++) {
             System.out.println(romans[i]);
@@ -18,100 +20,59 @@ public class Solution {
                     break;
 
                 case "V":
-                    if (i == 0) {
-                        number += 5;
-                        break;
-                    } else {
-                        j = i - 1;
-                        anteriorRoman = romans[j];
-                        if (anteriorRoman == 'I') {
-                            number += 5 - 2;
-                            break;
-                        } else {
-                            number += 5;
-                            break;
-                        }
-                    }
+                    nrobase = 5;
+                    descuento = 2;
+                    anteriorRoman = 'I';
+                    Converts valueV = new Converts();
+                    int digitV = valueV.evaluation(romans, anteriorRoman, i, nrobase, descuento);
+                    number = number + digitV;
+                    break;
+
 
                 case "X":
-                    if (i == 0) {
-                        number += 10;
-                        break;
-                    } else {
-                        j = i - 1;
-                        anteriorRoman = romans[j];
-                        if (anteriorRoman == 'I') {
-                            number += 10 - 2;
-                            break;
-                        } else {
-                            number += 10;
-                            break;
-                        }
-                    }
+                    nrobase = 10;
+                    descuento = 2;
+                    anteriorRoman = 'I';
+                    Converts valueX = new Converts();
+                    int digitX = valueX.evaluation(romans, anteriorRoman, i, nrobase, descuento);
+                    number = number + digitX;
+                    break;
 
                 case "L":
-                    if (i == 0) {
-                        number += 50;
-                        break;
-                    } else {
-                        j = i - 1;
-                        anteriorRoman = romans[j];
-                        if (anteriorRoman == 'X') {
-                            number += 50 - 20;
-                            break;
-                        } else {
-                            number += 50;
-                            break;
-                        }
-                    }
+                    nrobase = 50;
+                    descuento = 20;
+                    anteriorRoman = 'X';
+                    Converts valueL = new Converts();
+                    int digitL = valueL.evaluation(romans, anteriorRoman, i, nrobase, descuento);
+                    number = number + digitL;
+                    break;
 
                 case "C":
-                    if (i == 0) {
-                        number += 100;
-                        break;
-                    } else {
-                        j = i - 1;
-                        anteriorRoman = romans[j];
-                        if (anteriorRoman == 'X') {
-                            number += 100 - 20;
-                            break;
-                        } else {
-                            number += 100;
-                            break;
-                        }
-                    }
+                    nrobase = 100;
+                    descuento = 20;
+                    anteriorRoman = 'X';
+                    Converts valueC = new Converts();
+                    int digitC = valueC.evaluation(romans, anteriorRoman, i, nrobase, descuento);
+                    number = number + digitC;
+                    break;
 
                 case "D":
-                    if (i == 0) {
-                        number += 500;
-                        break;
-                    } else {
-                        j = i - 1;
-                        anteriorRoman = romans[j];
-                        if (anteriorRoman == 'C') {
-                            number += 500 - 200;
-                            break;
-                        } else {
-                            number += 500;
-                            break;
-                        }
-                    }
+                    nrobase = 500;
+                    descuento = 200;
+                    anteriorRoman = 'C';
+                    Converts valueD = new Converts();
+                    int digitD = valueD.evaluation(romans, anteriorRoman, i, nrobase, descuento);
+                    number = number + digitD;
+                    break;
 
                 case "M":
-                    if (i == 0) {
-                        number += 1000;
-                        break;
-                    } else {
-                        j = i - 1;
-                        anteriorRoman = romans[j];
-                        if (anteriorRoman == 'C') {
-                            number += 1000 - 200;
-                            break;
-                        } else {
-                            number += 1000;
-                            break;
-                        }
-                    }
+                    nrobase = 1000;
+                    descuento = 200;
+                    anteriorRoman = 'C';
+                    Converts valueM = new Converts();
+                    int digitM = valueM.evaluation(romans, anteriorRoman, i, nrobase, descuento);
+                    number = number + digitM;
+                    break;
             }
         }
         return number;
