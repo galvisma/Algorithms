@@ -8,7 +8,7 @@ public class Solution {
 
         char[] arrayParentheses = parentheses.toCharArray();            // O(parentheses)
         int allOk = 0; // O(1)
-                                                                       // time          Space
+        // time          Space
         Stack<Character> pila = new Stack<>(); // O(1)
         for (int i = 0; i < arrayParentheses.length; i++) {            // O(arrayParentheseslength);  O(1)
             char character = arrayParentheses[i];                      // O(1);         O(1)
@@ -19,7 +19,6 @@ public class Solution {
                 pila.push(character);                                   // O(1)         O(1)
                 System.out.println("pila: " + pila);
             } else {
-                closeParentheses(pila);
 
                 switch (character) {  // O(1)
                     case ')':         // O(1)
@@ -68,7 +67,5 @@ public class Solution {
             return false;
         }
     }
-
-    private void closeParentheses(Stack<Character> pila) {
-    }
 }
+
