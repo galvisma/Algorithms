@@ -7,7 +7,7 @@ public class Solution {
     public boolean isValid(String parentheses) {
 
         char[] arrayParentheses = parentheses.toCharArray();            // O(parentheses)
-        int allOk = 0; // O(1)
+        int allOk = 0;                                                  // O(1)
                                                                        // time          Space
         Stack<Character> pila = new Stack<>(); // O(1)
         for (int i = 0; i < arrayParentheses.length; i++) {            // O(arrayParentheseslength);  O(1)
@@ -21,25 +21,25 @@ public class Solution {
             } else {
                 closeParentheses(pila);
 
-                switch (character) {  // O(1)
-                    case ')':         // O(1)
+                switch (character) {                                        // O(1)
+                    case ')':                                               // O(1)
                         if (pila.isEmpty()) {                               // O(1)     O(0)
-                            allOk = 1;  // O(1)
+                            allOk = 1;                                      // O(1)
                         } else {
-                            char openCharacter = '(';     // O(1)
+                            char openCharacter = '(';                       // O(1)
                             if (pila.pop() != openCharacter) {              // O(1)     O(1)
-                                allOk = 1; // O(1)
+                                allOk = 1;                                  // O(1)
                             }
                             System.out.println("pila: " + i + " " + pila);
                         }
                         break;
 
                     case '}':
-                        if (pila.isEmpty()) {                               // O(1)         O(0)
+                        if (pila.isEmpty()) {                                   // O(1)         O(0)
                             allOk = 1;
                         } else {
                             char openCharacter = '{';
-                            if (pila.pop() != openCharacter) {              // O(1)         O(1)
+                            if (pila.pop() != openCharacter) {                  // O(1)         O(1)
                                 allOk = 1;
                             }
                             System.out.println("pila: " + i + " " + pila);
