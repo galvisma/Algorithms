@@ -1,21 +1,21 @@
 package romanToInteger;
 
 public class Converts {
-    public int evaluation(char[] romans, char anteriorRoman, int i, int nrobase, int descuento) {
+    public int evaluation(char[] romans, char beforeRoman, int i, int letterValue, int descuento) {
 
-        char letterAnterior = ' ';
+        char previousLetter = ' ';
         int digit = 0;
         int j = 0;
 
         if (i == 0) {
-            digit = nrobase;
+            digit = letterValue;
         } else {
             j = i - 1;
-            letterAnterior = romans[j];
-            if (letterAnterior == anteriorRoman) {
-                digit += nrobase - descuento;
+            previousLetter = romans[j];
+            if (previousLetter == beforeRoman) {
+                digit += letterValue - descuento;
             } else {
-                digit = nrobase;
+                digit = letterValue;
             }
         }
         return digit;

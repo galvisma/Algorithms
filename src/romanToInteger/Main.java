@@ -33,9 +33,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String s = "MMMCMXCIX";
+        String letters = "MMMCMXCIX";
         Solution intNumber = new Solution();
-        int number = intNumber.romanToInt(s);
-        System.out.println("numero romano: " + s + " igual a:  " + number);
+        int number = intNumber.romanToInt(letters);
+        System.out.println("Roman Number: " + letters + " igual a:  " + number);
     }
 }

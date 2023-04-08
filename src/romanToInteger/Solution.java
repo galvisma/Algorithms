@@ -1,14 +1,14 @@
 package romanToInteger;
 
 public class Solution {
-    public int romanToInt(String s) {
+    public int romanToInt(String letters) {
 
-        char[] romans = s.toCharArray();
+        char[] romans = letters.toCharArray();
         int number = 0;
         int j = 0;
-        char anteriorRoman = ' ';
-        int nrobase = 0;
-        int descuento = 0;
+        char beforeRoman = ' ';
+        int letterValue = 0;
+        int discount = 0;
 
         for (int i = 0; i < romans.length; i++) {
             System.out.println(romans[i]);
@@ -20,58 +20,58 @@ public class Solution {
                     break;
 
                 case "V":
-                    nrobase = 5;
-                    descuento = 2;
-                    anteriorRoman = 'I';
-                    Converts valueV = new Converts();
-                    int digitV = valueV.evaluation(romans, anteriorRoman, i, nrobase, descuento);
-                    number = number + digitV;
+                    letterValue = 5;
+                    discount = 2;
+                    beforeRoman = 'I';
+                    Converts valueLetterV = new Converts();
+                    int finalValueLetterV = valueLetterV.evaluation(romans, beforeRoman, i, letterValue, discount);
+                    number = number + finalValueLetterV;
                     break;
 
 
                 case "X":
-                    nrobase = 10;
-                    descuento = 2;
-                    anteriorRoman = 'I';
-                    Converts valueX = new Converts();
-                    int digitX = valueX.evaluation(romans, anteriorRoman, i, nrobase, descuento);
-                    number = number + digitX;
+                    letterValue = 10;
+                    discount = 2;
+                    beforeRoman = 'I';
+                    Converts valueLetterX = new Converts();
+                    int finalValueLetterX = valueLetterX.evaluation(romans, beforeRoman, i, letterValue, discount);
+                    number = number + finalValueLetterX;
                     break;
 
                 case "L":
-                    nrobase = 50;
-                    descuento = 20;
-                    anteriorRoman = 'X';
-                    Converts valueL = new Converts();
-                    int digitL = valueL.evaluation(romans, anteriorRoman, i, nrobase, descuento);
-                    number = number + digitL;
+                    letterValue = 50;
+                    discount = 20;
+                    beforeRoman = 'X';
+                    Converts valueLetterL = new Converts();
+                    int finalValueLetterL = valueLetterL.evaluation(romans, beforeRoman, i, letterValue, discount);
+                    number = number + finalValueLetterL;
                     break;
 
                 case "C":
-                    nrobase = 100;
-                    descuento = 20;
-                    anteriorRoman = 'X';
-                    Converts valueC = new Converts();
-                    int digitC = valueC.evaluation(romans, anteriorRoman, i, nrobase, descuento);
-                    number = number + digitC;
+                    letterValue = 100;
+                    discount = 20;
+                    beforeRoman = 'X';
+                    Converts valueLetterC = new Converts();
+                    int finalValueLetterC = valueLetterC.evaluation(romans, beforeRoman, i, letterValue, discount);
+                    number = number + finalValueLetterC;
                     break;
 
                 case "D":
-                    nrobase = 500;
-                    descuento = 200;
-                    anteriorRoman = 'C';
-                    Converts valueD = new Converts();
-                    int digitD = valueD.evaluation(romans, anteriorRoman, i, nrobase, descuento);
-                    number = number + digitD;
+                    letterValue = 500;
+                    discount = 200;
+                    beforeRoman = 'C';
+                    Converts valueLetterD = new Converts();
+                    int finalValueLetterD = valueLetterD.evaluation(romans, beforeRoman, i, letterValue, discount);
+                    number = number + finalValueLetterD;
                     break;
 
                 case "M":
-                    nrobase = 1000;
-                    descuento = 200;
-                    anteriorRoman = 'C';
-                    Converts valueM = new Converts();
-                    int digitM = valueM.evaluation(romans, anteriorRoman, i, nrobase, descuento);
-                    number = number + digitM;
+                    letterValue = 1000;
+                    discount = 200;
+                    beforeRoman = 'C';
+                    Converts valueLetterM = new Converts();
+                    int finalValueLetterM = valueLetterM.evaluation(romans, beforeRoman, i, letterValue, discount);
+                    number = number + finalValueLetterM;
                     break;
             }
         }
