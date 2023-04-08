@@ -1,29 +1,26 @@
 package commonPrefix;
 
-public class Solution {
+import java.util.Arrays;
+
+public class Solution<ArrayList> {
     public String longestCommonPrefix(String[] strs) {
 
-        int n = strs.length;
-        System.out.println("valor de n: " + n);
-        char[] prefix = new char[n];
-        for (int i = 0; i < strs.length; i++) {
-            String word = strs[i];
-            char[] letters = word.toCharArray();
-            prefix[i] = letters[i];
-            System.out.println("valor de i: " + i + "  letters[i] " + letters[i] + "  prefix[i] " + prefix[i]);
+        StringBuilder commonPrefix = new StringBuilder();
+        Arrays.sort(strs);
+        int size = strs.length;
 
-            Evaluation words = new Evaluation();
-            int answer = words.evaluationEachWord(strs, prefix[i], i);
-            if (answer == 1) {
-                prefix[i] = ' ';
+        // get the first and the last strings
+        char[] first = strs[0].toCharArray();
+        char[] last = strs[size - 1].toCharArray();
+
+        // start comparing
+        for (int i = 0; i < first.length; i++) {
+            if (first[i] != last[i]) {
                 break;
+            } else {
+                commonPrefix.append(first[i]);
             }
         }
-        for (int i = 0; i < prefix.length; i++) {
-            System.out.println("Prefix: " + i + "  es:  " + prefix[i]);
-        }
-        String commonPrefix = new String(prefix);
-        commonPrefix.replaceAll("\\s{2,}", " ");
-        return commonPrefix;
+        return commonPrefix.toString();
     }
 }
