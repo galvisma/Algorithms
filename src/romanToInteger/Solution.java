@@ -1,12 +1,14 @@
 package romanToInteger;
 
 public class Solution {
-    public int romanToInt(String s) {
+    public int romanToInt(String letters) {
 
-        char[] romans = s.toCharArray();
+        char[] romans = letters.toCharArray();
         int number = 0;
         int j = 0;
-        char anteriorRoman = ' ';
+        char beforeRoman = ' ';
+        int letterValue = 0;
+        int discount = 0;
 
         for (int i = 0; i < romans.length; i++) {
             System.out.println(romans[i]);
@@ -18,100 +20,59 @@ public class Solution {
                     break;
 
                 case "V":
-                    if (i == 0) {
-                        number += 5;
-                        break;
-                    } else {
-                        j = i - 1;
-                        anteriorRoman = romans[j];
-                        if (anteriorRoman == 'I') {
-                            number += 5 - 2;
-                            break;
-                        } else {
-                            number += 5;
-                            break;
-                        }
-                    }
+                    letterValue = 5;
+                    discount = 2;
+                    beforeRoman = 'I';
+                    Converts valueLetterV = new Converts();
+                    int finalValueLetterV = valueLetterV.evaluation(romans, beforeRoman, i, letterValue, discount);
+                    number = number + finalValueLetterV;
+                    break;
+
 
                 case "X":
-                    if (i == 0) {
-                        number += 10;
-                        break;
-                    } else {
-                        j = i - 1;
-                        anteriorRoman = romans[j];
-                        if (anteriorRoman == 'I') {
-                            number += 10 - 2;
-                            break;
-                        } else {
-                            number += 10;
-                            break;
-                        }
-                    }
+                    letterValue = 10;
+                    discount = 2;
+                    beforeRoman = 'I';
+                    Converts valueLetterX = new Converts();
+                    int finalValueLetterX = valueLetterX.evaluation(romans, beforeRoman, i, letterValue, discount);
+                    number = number + finalValueLetterX;
+                    break;
 
                 case "L":
-                    if (i == 0) {
-                        number += 50;
-                        break;
-                    } else {
-                        j = i - 1;
-                        anteriorRoman = romans[j];
-                        if (anteriorRoman == 'X') {
-                            number += 50 - 20;
-                            break;
-                        } else {
-                            number += 50;
-                            break;
-                        }
-                    }
+                    letterValue = 50;
+                    discount = 20;
+                    beforeRoman = 'X';
+                    Converts valueLetterL = new Converts();
+                    int finalValueLetterL = valueLetterL.evaluation(romans, beforeRoman, i, letterValue, discount);
+                    number = number + finalValueLetterL;
+                    break;
 
                 case "C":
-                    if (i == 0) {
-                        number += 100;
-                        break;
-                    } else {
-                        j = i - 1;
-                        anteriorRoman = romans[j];
-                        if (anteriorRoman == 'X') {
-                            number += 100 - 20;
-                            break;
-                        } else {
-                            number += 100;
-                            break;
-                        }
-                    }
+                    letterValue = 100;
+                    discount = 20;
+                    beforeRoman = 'X';
+                    Converts valueLetterC = new Converts();
+                    int finalValueLetterC = valueLetterC.evaluation(romans, beforeRoman, i, letterValue, discount);
+                    number = number + finalValueLetterC;
+                    break;
 
                 case "D":
-                    if (i == 0) {
-                        number += 500;
-                        break;
-                    } else {
-                        j = i - 1;
-                        anteriorRoman = romans[j];
-                        if (anteriorRoman == 'C') {
-                            number += 500 - 200;
-                            break;
-                        } else {
-                            number += 500;
-                            break;
-                        }
-                    }
+                    letterValue = 500;
+                    discount = 200;
+                    beforeRoman = 'C';
+                    Converts valueLetterD = new Converts();
+                    int finalValueLetterD = valueLetterD.evaluation(romans, beforeRoman, i, letterValue, discount);
+                    number = number + finalValueLetterD;
+                    break;
 
                 case "M":
-                    if (i == 0) {
-                        number += 1000;
-                        break;
-                    } else {
-                        j = i - 1;
-                        anteriorRoman = romans[j];
-                        if (anteriorRoman == 'C') {
-                            number += 1000 - 200;
-                            break;
-                        } else {
-                            number += 1000;
-                            break;
-                        }
-                    }
+                    letterValue = 1000;
+                    discount = 200;
+                    beforeRoman = 'C';
+                    Converts valueLetterM = new Converts();
+                    int finalValueLetterM = valueLetterM.evaluation(romans, beforeRoman, i, letterValue, discount);
+                    number = number + finalValueLetterM;
+                    break;
             }
         }
         return number;

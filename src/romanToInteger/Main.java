@@ -25,13 +25,17 @@ public class Main {
     Explanation: L = 50, V= 5, III = 3.
     Example 3:  Input: s = "MCMXCIV"    Output: 1994
     Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+    Constraints:
+    1 <= s.length <= 15
+    s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
+    It is guaranteed that s is a valid roman numeral in the range [1, 3999].
     */
 
     public static void main(String[] args) {
 
-        String s = "MMMCMXCIX";
+        String letters = "MMMCMXCIX";
         Solution intNumber = new Solution();
-        int number = intNumber.romanToInt(s);
-        System.out.println("numero romano: " + s + " igual a:  " + number);
+        int number = intNumber.romanToInt(letters);
+        System.out.println("Roman Number: " + letters + " igual a:  " + number);
     }
 }
