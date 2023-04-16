@@ -5,30 +5,46 @@ import java.util.Stack;
 public class Solution {
     public boolean isValid(String parentheses) {
 
-        char[] arrayParentheses = parentheses.toCharArray();            // O(parentheses)
-                                                                        // time          Space
-        Stack<Character> stack = new Stack<>(); // O(1)
-        boolean result = true;
-        for (int i = 0; i < arrayParentheses.length; i++) {            // O(arrayParentheses.length);  O(1)
-            char character = arrayParentheses[i];                      // O(1);         O(1)
+        char[] arrayParentheses = parentheses.toCharArray();
+        Stack<Character> stack = new Stack<>();
+        boolean allOk = true;
+        for (int i = 0; i < arrayParentheses.length; i++) {
+            char character = arrayParentheses[i];
+            boolean isOpencharacter = character == '[' || character == '{' || character == '(';
 
-            if (character == '[' ||                                    // O(1)         O(0)
-                    character == '{' ||
-                    character == '(') {
-                stack.push(character);                                  // O(1)         O(1)
+            if (isOpencharacter) {
+                stack.push(character);
                 System.out.println("stack: " + stack);
             } else {
-                Evaluation answer = new Evaluation();
-                result = answer.checkNextParentheses(stack, character, i);
-                if (stack.isEmpty() && !result) {                                     // O(1)     O(0)
-                    break;
+                switch (character) {
+                    case ')':
+                        allOk = checkCloseParentheses(stack, '(');
+                        break;
+                    case '}':
+                        allOk = checkCloseParentheses(stack, '{');
+                        break;
+                    case ']':
+                        allOk = checkCloseParentheses(stack, '[');
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + arrayParentheses[i]);
                 }
             }
         }
-        return result;
+        return allOk;
+    }
+
+    private boolean checkCloseParentheses(Stack<Character> stack, char openCharacter) {
+        boolean bug = true;
+        if (stack.isEmpty()) {
+            bug = false;
+        } else {
+            if (stack.pop() != openCharacter) {
+                bug = false;
+            }
+        }
+        return bug;
     }
 }
-
-
 
 
