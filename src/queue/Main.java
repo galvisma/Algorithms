@@ -8,6 +8,8 @@ public class Main {
         Queue<Integer> queue = new LinkedList<>();
 
         // To insert an element in the queue use "offer"
+        // offer() will return false if it fails to insert the element on a size restricted Queue,
+        // whereas add() will throw an IllegalStateException.
         for (int i = 0; i < 10; i++) {
             queue.offer(i);
         }
