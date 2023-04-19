@@ -7,7 +7,7 @@ public class Solution {
 
         char[] arrayParentheses = parentheses.toCharArray();
         Stack<Character> stack = new Stack<>();
-        boolean allOk = true;
+        boolean areValidParentheses = true;
         for (int i = 0; i < arrayParentheses.length; i++) {
             char character = arrayParentheses[i];
             boolean isOpencharacter = character == '[' || character == '{' || character == '(';
@@ -18,32 +18,32 @@ public class Solution {
             } else {
                 switch (character) {
                     case ')':
-                        allOk = checkCloseParentheses(stack, '(');
+                        areValidParentheses = areParenthesesBalanced(stack, '(');
                         break;
                     case '}':
-                        allOk = checkCloseParentheses(stack, '{');
+                        areValidParentheses = areParenthesesBalanced(stack, '{');
                         break;
                     case ']':
-                        allOk = checkCloseParentheses(stack, '[');
+                        areValidParentheses = areParenthesesBalanced(stack, '[');
                         break;
                     default:
-                        throw new IllegalStateException("Unexpected value: " + arrayParentheses[i]);
+                        throw new IllegalStateException("Unexpected value: " + character);
                 }
             }
         }
-        return allOk;
+        return areValidParentheses;
     }
 
-    private boolean checkCloseParentheses(Stack<Character> stack, char openCharacter) {
-        boolean bug = true;
+    private boolean areParenthesesBalanced(Stack<Character> stack, char openCharacter) {
+        boolean isCloseParenthesesCorrect = true;
         if (stack.isEmpty()) {
-            bug = false;
+            isCloseParenthesesCorrect = false;
         } else {
             if (stack.pop() != openCharacter) {
-                bug = false;
+                isCloseParenthesesCorrect = false;
             }
         }
-        return bug;
+        return isCloseParenthesesCorrect;
     }
 }
 
