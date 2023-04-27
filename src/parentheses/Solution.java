@@ -36,12 +36,8 @@ public class Solution {
 
     private boolean areParenthesesBalanced(Stack<Character> stack, char openCharacter) {
         boolean isCloseParenthesesCorrect = true;
-        if (stack.isEmpty()) {
+        if (stack.isEmpty() || stack.pop() != openCharacter) {
             isCloseParenthesesCorrect = false;
-        } else {
-            if (stack.pop() != openCharacter) {
-                isCloseParenthesesCorrect = false;
-            }
         }
         return isCloseParenthesesCorrect;
     }
